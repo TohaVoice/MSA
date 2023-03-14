@@ -10,7 +10,7 @@ Certificate: *(will be later)*
 <summary>
 <i>Keywords: </i>
 </summary>
-<p>Gradle </p>
+<p>Docker </p>
 </details>
 
 # Modules/Homeworks
