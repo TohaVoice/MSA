@@ -1,0 +1,19 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+jar {
+    manifest {
+        attributes 'Implementation-Title': 'hw01-docker',
+                'Main-Class': 'ru.otus.shatokhin.WebServer'
+    }
+}
+
+repositories {
+    jcenter()
+}
+
+application {
+    mainClassName = 'ru.otus.shatokhin.WebServer'
+}
