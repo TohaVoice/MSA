@@ -13,11 +13,11 @@ public class HealthHandler implements HttpHandler {
         String requestMethod = exchange.getRequestMethod();
         if ("GET".equalsIgnoreCase(requestMethod)) {
             Headers responseHeaders = exchange.getResponseHeaders();
-            responseHeaders.set("Content-Type", "text/plain");
+            responseHeaders.set("Content-Type", "application/json; charset=utf-8");
             exchange.sendResponseHeaders(200, 0);
 
             try (OutputStream responseBody = exchange.getResponseBody()) {
-                responseBody.write("Welcome to first homework of the course Microservice Architecture".getBytes());
+                responseBody.write("{\"status\": \"OK\"}".getBytes());
             }
         }
     }
