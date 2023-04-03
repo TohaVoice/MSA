@@ -10,10 +10,6 @@ jar {
     }
 }
 
-repositories {
-    jcenter()
-}
-
 application {
     mainClassName = 'ru.otus.shatokhin.WebServer'
 }
