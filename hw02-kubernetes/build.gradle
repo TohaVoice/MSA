@@ -1,0 +1,20 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+jar {
+    manifest {
+        attributes 'Implementation-Title': 'hw02-kubernetes',
+                'Main-Class': 'ru.otus.shatokhin.WebServer'
+    }
+}
+
+application {
+    mainClassName = 'ru.otus.shatokhin.WebServer'
+}
