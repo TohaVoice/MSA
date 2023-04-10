@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demo-web-service
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: demo-web-service
+  strategy:
+    rollingUpdate:
+      maxSurge: 1 # how many pods can add at a time
+      maxUnavailable: 0 # define how many ports can be unavailable
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: demo-web-service
+    spec:
+      containers:
+        - image: avshatokhin/msa:hw02-kubernetes
+          name: hw02-kubernetes
+          ports:
+            - name: web
+              containerPort: 8000
