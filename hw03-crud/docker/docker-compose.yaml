@@ -1,0 +1,37 @@
+version: '3.8'
+services:
+  db:
+    container_name: postgres-sql
+    image: postgres:15.2-alpine
+    restart: always
+#    ports:
+#      - 5434:5434
+    networks:
+      - hw03-crud
+    environment:
+      POSTGRES_INITDB_ARGS: --auth-host=scram-sha-256
+      POSTGRES_USER: sa
+      POSTGRES_DB: test
+      POSTGRES_PASSWORD: example
+      TZ: Europe/Samara
+  app:
+    container_name: crud-app
+    image: avshatokhin/msa:hw03-crud
+    networks:
+      - hw03-crud
+    restart: always
+    ports:
+      - 80:8000
+    environment:
+      HTTP_PORT: 8000
+      APP_LOG_LEVEL: ERROR
+      DB_HOST: jdbc:postgresql://db/test
+      DB_USER: sa
+      DB_PASSWORD: example
+    depends_on:
+      - db
+
+networks:
+  hw03-crud:
+
+#    jdbc:postgresql://postgres:5432/postgresdb
