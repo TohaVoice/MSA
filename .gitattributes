@@ -1,4 +1,3 @@
 *.sql linguist-detectable=true
 *.gradle linguist-detectable=true
-*.yaml linguist-detectable=true
 *.yml linguist-detectable=true
