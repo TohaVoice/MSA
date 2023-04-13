@@ -1,0 +1,21 @@
+replicaCount: 1
+
+image:
+  repository: avshatokhin/msa
+  pullPolicy: IfNotPresent
+  tag: hw03-crud
+
+service:
+  type: NodePort
+  port: 80
+  targetPort: 8000
+
+ingress:
+  enabled: true
+  className: nginx
+  annotations: {}
+  hosts:
+    - host: arch.homework
+      paths:
+        - path: /
+          pathType: Prefix

@@ -1,12 +1,17 @@
 package ru.otus.shatokhin.config;
 
 import jakarta.annotation.PostConstruct;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import ru.otus.shatokhin.UserApplication;
 
 import java.util.StringJoiner;
 
 @ConfigurationProperties(prefix = "spring.datasource")
 public class DbProperties {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(DbProperties.class);
 
     private static final String ERROR_MSG_PATTERN = "Environment variable %s is empty. Please set it";
     private String username;
@@ -15,7 +20,7 @@ public class DbProperties {
 
     @PostConstruct
     public void printInit() {
-//        log.info(toString());
+        LOGGER.info(toString());
         StringJoiner errors = new StringJoiner(", ");
         if (url.equals("${DB_HOST}")) {
             errors.add("DB_HOST");
@@ -29,6 +34,7 @@ public class DbProperties {
         if (errors.length() > 0) {
             throw new IllegalArgumentException(String.format(ERROR_MSG_PATTERN, errors));
         }
+
     }
 
     public String getUsername() {
@@ -53,5 +59,14 @@ public class DbProperties {
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    @Override
+    public String toString() {
+        return "DbProperties{" +
+                "username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", url='" + url + '\'' +
+                '}';
     }
 }
