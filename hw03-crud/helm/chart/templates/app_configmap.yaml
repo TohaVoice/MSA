@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-config
+data:
+  DB_HOST: "jdbc:postgresql://postgres-db/msaDb"
+  HTTP_PORT: "8000"
+  APP_LOG_LEVEL: "ERROR"
+  DB_USER: "ashatokhin"

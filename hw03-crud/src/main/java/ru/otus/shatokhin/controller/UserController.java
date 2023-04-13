@@ -10,7 +10,7 @@ import ru.otus.shatokhin.service.UserService;
 import java.util.List;
 
 @RestController
-//@RequestMapping("${web.root}")
+@RequestMapping("${web.root}")
 public class UserController {
 
     @Autowired
@@ -42,8 +42,8 @@ public class UserController {
 
     @PutMapping("/user/{id}")
     @ResponseStatus(HttpStatus.OK)
-    private void updateUser(@PathVariable("id") Long userId, @RequestBody User user) throws UserNotFoundException {
-        userService.updateUser(userId, user);
+    private User updateUser(@PathVariable("id") Long userId, @RequestBody User user) throws UserNotFoundException {
+        return userService.updateUser(userId, user);
     }
 
 }
